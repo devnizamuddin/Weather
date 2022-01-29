@@ -1,4 +1,4 @@
-package com.example.nizamuddinshamrat.weather;
+package com.example.sadia.weather;
 
 import org.junit.Test;
 

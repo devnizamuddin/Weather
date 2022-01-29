@@ -1,12 +1,16 @@
-package com.example.nizamuddinshamrat.weather;
+package com.example.sadia.weather;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder> {
 
@@ -32,6 +36,11 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     public void onBindViewHolder(@NonNull ForecastViewHolder holder, int position) {
 
         ForecastWeatherResponse.List forecastList = forecastWeatherResponse.getList().get(position);
+
+        Date date = new Date(forecastList.getDt());
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
+        String day = formatter.format(date);
+        holder.dayTv.setText(day);
         holder.minTempTv.setText("Min:"+forecastList.getTemp().getMin().toString());
         holder.maxTempTV.setText("Max:"+forecastList.getTemp().getMax().toString());
     }

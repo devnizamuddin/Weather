@@ -1,4 +1,4 @@
-package com.example.nizamuddinshamrat.weather;
+package com.example.sadia.weather;
 
 import android.Manifest;
 import android.app.SearchManager;
@@ -9,18 +9,17 @@ import android.graphics.Rect;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
 
     RecyclerView.LayoutManager layoutManager;
-    android.support.v7.widget.Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
     RecyclerView forecastRV;
     TextView locationTV,tempTV,weatherConditionTv;
     boolean searchWeather = false;
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
 
-                outRect.set(50,0,50,0);
+                outRect.set(0,0,32,0);
             }
         };
         forecastRV.addItemDecoration(itemDecoration);
@@ -243,7 +242,7 @@ if (!searchWeather) {
                     CurrentWeatherResponse weatherInfo = response.body();
                     if (weatherInfo != null) {
 
-                        tempTV.setText(weatherInfo.getMain().getTemp().toString()+"°C");
+                        tempTV.setText(String.format("%.1f",weatherInfo.getMain().getTemp())+"°C");
                         weatherConditionTv.setText(weatherInfo.getWeather().get(0).getDescription());
                         locationTV.setText(weatherInfo.getSys().getCountry());
 

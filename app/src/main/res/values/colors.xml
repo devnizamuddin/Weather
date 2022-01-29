@@ -7,4 +7,5 @@
     <color name="gradientLight">#BBDEFB</color>
     <color name="gradiantDark">#0D47A1</color>
     <color name="orange">#FFF176</color>
+    <color name="forcast_background">#3498db</color>
 </resources>

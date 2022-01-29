@@ -204,11 +204,10 @@ if (!searchWeather) {
 
 
                 if (response.code() == 200){
-                    Toast.makeText(context, "Yes", Toast.LENGTH_SHORT).show();
                     if (response.code() == 200){
                         ForecastWeatherResponse forecastWeatherResponse = response.body();
                         String date = forecastWeatherResponse.getList().get(0).getDt().toString();
-                        Toast.makeText(context, date, Toast.LENGTH_SHORT).show();
+                    //    Toast.makeText(context, date, Toast.LENGTH_SHORT).show();
                         forecastRV.setLayoutManager(layoutManager);
                         ForecastAdapter forecastAdapter = new ForecastAdapter(MainActivity.this,forecastWeatherResponse);
                         forecastRV.setAdapter(forecastAdapter);

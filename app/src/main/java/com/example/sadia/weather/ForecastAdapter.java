@@ -47,7 +47,12 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     @Override
     public int getItemCount() {
-        return forecastWeatherResponse.getList().size();
+        try {
+            return forecastWeatherResponse.getList().size();
+        }
+        catch (Exception e){
+            return 0;
+        }
     }
 
     public class ForecastViewHolder extends RecyclerView.ViewHolder {
@@ -64,4 +69,9 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
             maxTempTV = itemView.findViewById(R.id.maxTempTv);
         }
     }
+
+   void updateForeCastResponse(ForecastWeatherResponse forecastWeatherResponse){
+        this.forecastWeatherResponse = forecastWeatherResponse;
+        notifyDataSetChanged();
+   }
 }
